@@ -1,0 +1,13 @@
+{
+  "camera": {
+    "x": 10,
+    "y": 5,
+    "z": -12
+  },
+  "fog": {
+    "start": 6.0,
+    "end": 24.0
+  }
+}
+
+lua_register(L, "move_player", lua_move_player);
