@@ -1,0 +1,23 @@
+[Unit]
+Description=P-Linux Init Service
+After=basic.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /opt/p-linux/services/p-linux-init/init.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+[Unit]
+Description=P-Linux Hardware Manager
+After=p-linux-init.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /opt/p-linux/services/p-linux-hw/hw.										 l m
+
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

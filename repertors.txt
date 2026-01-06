@@ -1,0 +1,7 @@
+pip install openwakeword pyaudio numpy
+pip install -U openai-whisper torch sounddevice scipy
+curl -fsSL https://ollama.com/install.sh | sh
+ollama pull phi3
+grub-mkconfig -o /boot/grub/grub.cfg
+plymouth-set-default-theme p-linux-retro -R
+sudo sddm --test-mode

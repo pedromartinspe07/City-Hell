@@ -1,0 +1,11 @@
+{
+  "services": [
+    "udev",
+    "network",
+    "audio",
+    "video",
+    "input"
+  ],
+  "boot_delay": 0.5,
+  "log_file": "/var/log/p-linux-init.log"
+}

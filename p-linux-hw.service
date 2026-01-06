@@ -1,0 +1,6 @@
+{
+  "voice": true,
+  "camera": false,
+  "memory": true,
+  "disk": false
+}

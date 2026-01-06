@@ -1,18 +1,11 @@
-struct Player {
-    float x, z;
-    float rot;
-};
+import os
 
-void player_update(Player* p, float dt) {
-    p->x += 0.5f * dt;
-}
-struct Camera {
-    float x, y, z;
-    float targetX, targetY, targetZ;
-};
+def init_camera():
+    print("[CAMERA] Checking cameras...")
+    cams = [d for d in os.listdir("/dev") if "video" in d]
 
-void camera_set(Camera* c, float x, float y, float z) {
-    c->x = x;
-    c->y = y;
-    c->z = z;
-}
+    if not cams:
+        print("[CAMERA] No camera detected.")
+    else:
+        for cam in cams:
+            print(f"[CAMERA] Found camera: /dev/{cam}")

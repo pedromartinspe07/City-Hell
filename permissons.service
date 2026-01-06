@@ -1,0 +1,27 @@
+mkdir -p ~/PlinuxISO/{boot,iso}
+sudo apt update
+sudo apt install squashfs-tools xorriso grub-pc-bin grub-efi-amd64-bin
+sudo pacman -S squashfs-tools xorriso grub
+sudo rsync -aAXv /* ~/PlinuxISO/iso/ --exclude=/proc --exclude=/sys --exclude=/tmp --exclude=/mnt --exclude=/dev --exclude=/run
+cp /boot/vmlinuz-* ~/PlinuxISO/boot/vmlinuz
+cp /boot/initrd.img-* ~/PlinuxISO/boot/initrd.img
+mkdir -p ~/PlinuxISO/boot/grub
+nano ~/PlinuxISO/boot/grub/grub.cfg
+set timeout=5
+set default=0
+
+menuentry "Plinux Windows 7 Edition" {
+    linux /boot/vmlinuz root=/dev/sr0
+    initrd /boot/initrd.img
+}
+cd ~/PlinuxISO
+sudo xorriso -as mkisofs \
+  -iso-level 3 \
+  -volid "PLINUX_WIN7" \
+  -output ~/Plinux.iso \
+  -boot-grub2 \
+  -boot-info-table \
+  -eltorito-alt-boot \
+  -e boot/grub/efi.img \
+  -no-emul-boot \
+  iso/

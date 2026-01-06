@@ -1,0 +1,11 @@
+[Unit]
+Description=P-Linux AI Service
+After=p-linux-hw.service
+
+[Service]
+User=plinux-ai
+ExecStart=/usr/bin/python3 /opt/p-linux/services/p-linux-ai/ai.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

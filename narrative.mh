@@ -1,0 +1,14 @@
+import random
+
+states = [
+    "A rua está vazia.",
+    "Você sente que está sendo observado.",
+    "Um carro abandonado bloqueia o caminho.",
+    "A neblina fica mais densa."
+]
+
+event = next_event()
+response = ask_llm(f"Ambiente: {event}. O que o jogador sente?")
+
+def next_event():
+    return random.choice(states)

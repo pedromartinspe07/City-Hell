@@ -1,0 +1,17 @@
+import pyttsx3
+import speech_recognition as sr
+
+engine = pyttsx3.init()
+
+def speak(text):
+    engine.say(text)
+    engine.runAndWait()
+
+def listen_voice():
+    r = sr.Recognizer()
+    with sr.Microphone() as src:
+        try:
+            audio = r.listen(src, timeout=2)
+            return r.recognize_google(audio, language="pt-BR")
+        except:
+            return None
